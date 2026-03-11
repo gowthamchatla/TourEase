@@ -1,0 +1,384 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#0F0F1A"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <!-- Header -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="8dp">
+
+            <ImageView
+                android:id="@+id/btnBack"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:src="@drawable/ic_arrow_back"
+                android:contentDescription="Back"
+                android:padding="6dp" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:layout_marginStart="12dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Flight Tickets"
+                    android:textColor="#FFFFFF"
+                    android:textSize="22sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Find the best deals on flights ✈️"
+                    android:textColor="#8888AA"
+                    android:textSize="13sp"
+                    android:layout_marginTop="2dp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Card Container -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/bg_card_dark"
+            android:padding="18dp"
+            android:layout_marginTop="12dp">
+
+            <!-- FROM -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="FROM"
+                android:textColor="#6C63FF"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:letterSpacing="0.1" />
+
+            <EditText
+                android:id="@+id/etFrom"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:background="@drawable/bg_input_dark"
+                android:hint="Departure city"
+                android:textColorHint="#555577"
+                android:textColor="#FFFFFF"
+                android:textSize="14sp"
+                android:paddingStart="14dp"
+                android:paddingEnd="14dp"
+                android:layout_marginTop="6dp"
+                android:inputType="text" />
+
+            <!-- Swap Button -->
+            <ImageView
+                android:id="@+id/btnSwap"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:src="@drawable/ic_swap"
+                android:background="@drawable/bg_swap_button"
+                android:padding="8dp"
+                android:contentDescription="Swap cities" />
+
+            <!-- TO -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="TO"
+                android:textColor="#6C63FF"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:letterSpacing="0.1" />
+
+            <EditText
+                android:id="@+id/etTo"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:background="@drawable/bg_input_dark"
+                android:hint="Destination city"
+                android:textColorHint="#555577"
+                android:textColor="#FFFFFF"
+                android:textSize="14sp"
+                android:paddingStart="14dp"
+                android:paddingEnd="14dp"
+                android:layout_marginTop="6dp"
+                android:inputType="text" />
+
+            <!-- Journey Date -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="JOURNEY DATE"
+                android:textColor="#6C63FF"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:letterSpacing="0.1"
+                android:layout_marginTop="16dp" />
+
+            <TextView
+                android:id="@+id/tvDate"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:background="@drawable/bg_input_dark"
+                android:hint="Select date"
+                android:textColorHint="#555577"
+                android:textColor="#FFFFFF"
+                android:textSize="14sp"
+                android:gravity="center_vertical"
+                android:paddingStart="14dp"
+                android:paddingEnd="14dp"
+                android:layout_marginTop="6dp" />
+
+            <!-- Class Type -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="CLASS"
+                android:textColor="#6C63FF"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:letterSpacing="0.1"
+                android:layout_marginTop="16dp" />
+
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/chipGroupClass"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:singleSelection="true"
+                xmlns:app="http://schemas.android.com/apk/res-auto">
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipEconomy"
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ECONOMY"
+                    android:textColor="#FFFFFF"
+                    android:checked="true"
+                    app:chipBackgroundColor="@color/chip_bg_selector" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipBusiness"
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="BUSINESS"
+                    android:textColor="#FFFFFF"
+                    app:chipBackgroundColor="@color/chip_bg_selector" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipFirst"
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="FIRST"
+                    android:textColor="#FFFFFF"
+                    app:chipBackgroundColor="@color/chip_bg_selector" />
+            </com.google.android.material.chip.ChipGroup>
+
+            <!-- Special Fares -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="SPECIAL FARES"
+                android:textColor="#6C63FF"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:letterSpacing="0.1"
+                android:layout_marginTop="16dp" />
+
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/chipGroupFares"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:singleSelection="true"
+                xmlns:app="http://schemas.android.com/apk/res-auto">
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipNone"
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="NONE"
+                    android:textColor="#FFFFFF"
+                    android:checked="true"
+                    app:chipBackgroundColor="@color/chip_bg_selector" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipStudent"
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="STUDENT"
+                    android:textColor="#FFFFFF"
+                    app:chipBackgroundColor="@color/chip_bg_selector" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipSenior"
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="SENIOR CITIZEN"
+                    android:textColor="#FFFFFF"
+                    app:chipBackgroundColor="@color/chip_bg_selector" />
+            </com.google.android.material.chip.ChipGroup>
+
+            <!-- Seat Preference -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="SEAT PREFERENCE"
+                android:textColor="#6C63FF"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:letterSpacing="0.1"
+                android:layout_marginTop="16dp" />
+
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/chipGroupSeat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:singleSelection="true"
+                xmlns:app="http://schemas.android.com/apk/res-auto">
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipWindow"
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="WINDOW"
+                    android:textColor="#FFFFFF"
+                    android:checked="true"
+                    app:chipBackgroundColor="@color/chip_bg_selector" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipMiddle"
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="MIDDLE"
+                    android:textColor="#FFFFFF"
+                    app:chipBackgroundColor="@color/chip_bg_selector" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipAisle"
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="AISLE"
+                    android:textColor="#FFFFFF"
+                    app:chipBackgroundColor="@color/chip_bg_selector" />
+            </com.google.android.material.chip.ChipGroup>
+
+            <!-- Search Button -->
+            <Button
+                android:id="@+id/btnSearchFlights"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:text="SEARCH FLIGHTS"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"
+                android:backgroundTint="#6C63FF"
+                android:layout_marginTop="20dp" />
+
+            <!-- Cancel Ticket Button -->
+            <Button
+                android:id="@+id/btnCancelTicket"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:text="CANCEL TICKET"
+                android:textColor="#FF5555"
+                android:textStyle="bold"
+                android:backgroundTint="#1A1A2E"
+                android:layout_marginTop="10dp"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:strokeColor="#FF5555" />
+
+        </LinearLayout>
+
+        <!-- Popular Routes -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Popular Routes 🔥"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_marginTop="20dp" />
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scrollbars="none"
+            android:layout_marginTop="10dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <com.google.android.material.chip.Chip
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Delhi → Mumbai"
+                    android:textColor="#CCCCDD"
+                    android:clickable="true"
+                    app:chipBackgroundColor="#1A1A2E"
+                    xmlns:app="http://schemas.android.com/apk/res-auto" />
+
+                <com.google.android.material.chip.Chip
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Chennai → Bangalore"
+                    android:textColor="#CCCCDD"
+                    android:clickable="true"
+                    android:layout_marginStart="8dp"
+                    app:chipBackgroundColor="#1A1A2E"
+                    xmlns:app="http://schemas.android.com/apk/res-auto" />
+
+                <com.google.android.material.chip.Chip
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Mumbai → Goa"
+                    android:textColor="#CCCCDD"
+                    android:clickable="true"
+                    android:layout_marginStart="8dp"
+                    app:chipBackgroundColor="#1A1A2E"
+                    xmlns:app="http://schemas.android.com/apk/res-auto" />
+
+                <com.google.android.material.chip.Chip
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Kolkata → Delhi"
+                    android:textColor="#CCCCDD"
+                    android:clickable="true"
+                    android:layout_marginStart="8dp"
+                    app:chipBackgroundColor="#1A1A2E"
+                    xmlns:app="http://schemas.android.com/apk/res-auto" />
+
+            </LinearLayout>
+        </HorizontalScrollView>
+
+    </LinearLayout>
+</ScrollView>

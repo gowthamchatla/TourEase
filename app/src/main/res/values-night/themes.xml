@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Dark Theme -->
+    <style name="AppTheme" parent="Theme.AppCompat.NoActionBar">
+        <item name="colorPrimary">@color/orange</item>
+        <item name="colorPrimaryDark">@color/dark_background</item>
+        <item name="colorAccent">@color/orange</item>
+        <item name="android:windowBackground">@color/dark_background</item>
+        <item name="android:textColor">@color/dark_text</item>
+    </style>
+    <style name="DarkDatePicker" parent="Theme.AppCompat.Dialog">
+        <item name="colorAccent">#6C63FF</item>
+        <item name="android:windowBackground">#1A1A2E</item>
+        <item name="android:textColorPrimary">#FFFFFF</item>
+        <item name="android:textColorSecondary">#8888AA</item>
+    </style>
+
+    <style name="DarkAlertDialog" parent="Theme.AppCompat.Dialog.Alert">
+        <item name="colorAccent">#6C63FF</item>
+        <item name="android:windowBackground">#1A1A2E</item>
+        <item name="android:textColorPrimary">#FFFFFF</item>
+        <item name="android:textColorSecondary">#8888AA</item>
+    </style>
+</resources>

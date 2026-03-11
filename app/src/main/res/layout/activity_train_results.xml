@@ -1,0 +1,55 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical" android:background="#0F0F1A">
+    <!--  TOP BAR  -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:paddingTop="48dp"
+        android:paddingBottom="16dp"
+        android:background="#1A1A2E"
+        android:gravity="center_vertical"
+        android:elevation="8dp">
+        <ImageView
+            android:id="@+id/ivBack"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:padding="8dp"
+            android:src="@android:drawable/ic_menu_revert"
+            android:background="@drawable/bg_circle_translucent"
+            app:tint="#FFFFFF"/>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_marginStart="16dp">
+            <TextView
+                android:id="@+id/tvRoute"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Delhi → Mumbai"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"/>
+            <TextView
+                android:id="@+id/tvDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="15 Mar 2024"
+                android:textSize="13sp"
+                android:textColor="#7C7C99"
+                android:layout_marginTop="2dp"/>
+        </LinearLayout>
+    </LinearLayout>
+    <!--  RESULTS COUNT + LIVE BADGE  -->
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:paddingStart="20dp" android:paddingEnd="20dp" android:paddingTop="16dp" android:paddingBottom="8dp">
+        <TextView android:id="@+id/tvResultsCount" android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:text="Finding trains..." android:textSize="14sp" android:textColor="#7C7C99"/>
+        <TextView android:id="@+id/tvLiveBadge" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="● LIVE" android:textSize="11sp" android:textColor="#00E676" android:visibility="gone"/>
+    </LinearLayout>
+    <!--  LOADING  -->
+    <ProgressBar android:id="@+id/progressBar" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_gravity="center" android:layout_marginTop="40dp" android:indeterminateTint="#6C63FF" android:visibility="gone"/>
+    <!--  TRAIN LIST  -->
+    <androidx.recyclerview.widget.RecyclerView android:id="@+id/rvTrains" android:layout_width="match_parent" android:layout_height="match_parent" android:paddingStart="12dp" android:paddingEnd="12dp" android:paddingTop="4dp" android:paddingBottom="16dp" android:clipToPadding="false"/>
+</LinearLayout>

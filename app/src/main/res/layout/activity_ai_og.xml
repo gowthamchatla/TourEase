@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#F5F5F5">
+
+    <!-- TOP BAR -->
+    <LinearLayout
+        android:id="@+id/topBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        android:background="#FF6B35"
+        android:gravity="center_vertical"
+        android:elevation="4dp">
+
+        <ImageView
+            android:id="@+id/ivBack"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@android:drawable/ic_menu_revert"
+            android:tint="#FFFFFF"/>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_marginStart="12dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="AI OG"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Your Travel Assistant 🤖"
+                android:textSize="12sp"
+                android:textColor="#FFFFFF"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="🤖"
+            android:textSize="32sp"/>
+
+    </LinearLayout>
+
+    <!-- CHAT AREA -->
+    <ScrollView
+        android:id="@+id/chatScrollView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:padding="16dp">
+
+        <LinearLayout
+            android:id="@+id/chatContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- Welcome Message -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:layout_marginBottom="16dp"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="2dp"
+                app:cardBackgroundColor="#FFFFFF">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Hey! I'm AI OG 🤖"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:textColor="#333333"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Your personal travel assistant!\nAsk me anything about your trip!"
+                        android:textSize="14sp"
+                        android:textColor="#666666"
+                        android:layout_marginTop="8dp"/>
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <!-- Quick Actions -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Try asking:"
+                android:textSize="12sp"
+                android:textColor="#999999"
+                android:layout_marginBottom="8dp"/>
+
+            <!-- Quick Action Buttons -->
+            <Button
+                android:id="@+id/btnBestPlaces"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="🏖️ Best beaches in India"
+                android:textAlignment="textStart"
+                android:padding="12dp"
+                android:layout_marginBottom="8dp"
+                android:backgroundTint="#E3F2FD"
+                android:textColor="#333333"/>
+
+            <Button
+                android:id="@+id/btnBudget"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="💰 Budget travel tips"
+                android:textAlignment="textStart"
+                android:padding="12dp"
+                android:layout_marginBottom="8dp"
+                android:backgroundTint="#FFF3E0"
+                android:textColor="#333333"/>
+
+            <Button
+                android:id="@+id/btnWeather"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="☀️ Best time to visit Manali"
+                android:textAlignment="textStart"
+                android:padding="12dp"
+                android:layout_marginBottom="8dp"
+                android:backgroundTint="#E8F5E9"
+                android:textColor="#333333"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <!-- INPUT AREA -->
+    <LinearLayout
+        android:id="@+id/inputArea"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        android:background="#FFFFFF"
+        android:elevation="8dp">
+
+        <EditText
+            android:id="@+id/etMessage"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:hint="Ask AI OG anything..."
+            android:padding="12dp"
+            android:background="@android:drawable/edit_text"
+            android:maxLines="3"/>
+
+        <ImageView
+            android:id="@+id/btnSend"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@android:drawable/ic_menu_send"
+            android:padding="12dp"
+            android:layout_marginStart="8dp"
+            android:tint="#FF6B35"/>
+
+    </LinearLayout>
+
+</LinearLayout>

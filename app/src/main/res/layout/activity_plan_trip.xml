@@ -1,0 +1,439 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:background="#F7F7FA">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingBottom="32dp">
+
+        <!-- Top Bar -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:background="#FFFFFF"
+            android:elevation="2dp">
+
+            <ImageView
+                android:id="@+id/ivBack"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_centerVertical="true"
+                android:src="@android:drawable/ic_menu_revert"
+                android:padding="4dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="Plan Your Trip"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="#1A1A2E"/>
+
+        </RelativeLayout>
+
+        <!-- Origin Card -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/card_rounded_bg"
+            android:padding="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginTop="16dp"
+            android:elevation="2dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="📍 Travelling from?"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:textColor="#1A1A2E"/>
+
+            <AutoCompleteTextView
+                android:id="@+id/etOrigin"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:hint="Enter your city"
+                android:textColorHint="#999999"
+                android:textSize="15sp"
+                android:background="@drawable/edittext_rounded_bg"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:layout_marginTop="8dp"
+                android:inputType="text"
+                android:maxLines="1"
+                android:completionThreshold="1"
+                android:dropDownHeight="wrap_content"/>
+        </LinearLayout>
+
+        <!-- Destination Card -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/card_rounded_bg"
+            android:padding="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginTop="12dp"
+            android:elevation="2dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="🎯 Where to?"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:textColor="#1A1A2E"/>
+
+            <AutoCompleteTextView
+                android:id="@+id/etDestination"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:hint="Enter destination"
+                android:textColorHint="#999999"
+                android:textSize="15sp"
+                android:background="@drawable/edittext_rounded_bg"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:layout_marginTop="8dp"
+                android:inputType="text"
+                android:maxLines="1"
+                android:completionThreshold="1"
+                android:dropDownHeight="wrap_content"/>
+        </LinearLayout>
+
+        <!-- Dates Card -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/card_rounded_bg"
+            android:padding="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginTop="12dp"
+            android:elevation="2dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="📅 When?"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:textColor="#1A1A2E"/>
+
+            <EditText
+                android:id="@+id/etDates"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:hint="Select dates"
+                android:textColorHint="#999999"
+                android:textSize="15sp"
+                android:background="@drawable/edittext_rounded_bg"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:layout_marginTop="8dp"
+                android:focusable="false"
+                android:clickable="true"/>
+
+        </LinearLayout>
+
+        <!-- Travelers Card -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/card_rounded_bg"
+            android:padding="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginTop="12dp"
+            android:elevation="2dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="👥 Who's coming?"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:textColor="#1A1A2E"/>
+
+            <GridLayout
+                android:id="@+id/travelersGrid"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:columnCount="4"
+                android:layout_marginTop="10dp">
+
+                <Button
+                    android:id="@+id/btnSolo"
+                    android:layout_width="0dp"
+                    android:layout_columnWeight="1"
+                    android:layout_height="42dp"
+                    android:text="Solo"
+                    android:textSize="12sp"
+                    android:textAllCaps="false"
+                    android:background="@drawable/chip_unselected_bg"
+                    android:textColor="#666666"
+                    android:layout_margin="4dp"/>
+
+                <Button
+                    android:id="@+id/btnCouple"
+                    android:layout_width="0dp"
+                    android:layout_columnWeight="1"
+                    android:layout_height="42dp"
+                    android:text="Couple"
+                    android:textSize="12sp"
+                    android:textAllCaps="false"
+                    android:background="@drawable/chip_unselected_bg"
+                    android:textColor="#666666"
+                    android:layout_margin="4dp"/>
+
+                <Button
+                    android:id="@+id/btnFamily"
+                    android:layout_width="0dp"
+                    android:layout_columnWeight="1"
+                    android:layout_height="42dp"
+                    android:text="Family"
+                    android:textSize="12sp"
+                    android:textAllCaps="false"
+                    android:background="@drawable/chip_unselected_bg"
+                    android:textColor="#666666"
+                    android:layout_margin="4dp"/>
+
+                <Button
+                    android:id="@+id/btnFriends"
+                    android:layout_width="0dp"
+                    android:layout_columnWeight="1"
+                    android:layout_height="42dp"
+                    android:text="Friends"
+                    android:textSize="12sp"
+                    android:textAllCaps="false"
+                    android:background="@drawable/chip_unselected_bg"
+                    android:textColor="#666666"
+                    android:layout_margin="4dp"/>
+
+            </GridLayout>
+
+        </LinearLayout>
+
+        <!-- Budget Card -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/card_rounded_bg"
+            android:padding="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginTop="12dp"
+            android:elevation="2dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="💰 Budget per person"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:textColor="#1A1A2E"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp">
+
+                <Button
+                    android:id="@+id/btnBudgetLow"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="Broke\nStudent\n₹2K-5K"
+                    android:textSize="11sp"
+                    android:textAllCaps="false"
+                    android:background="@drawable/chip_unselected_bg"
+                    android:textColor="#666666"
+                    android:layout_margin="4dp"
+                    android:padding="8dp"
+                    android:lineSpacingExtra="2dp"/>
+
+                <Button
+                    android:id="@+id/btnBudgetMid"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="Got Pocket\nMoney\n₹5K-15K"
+                    android:textSize="11sp"
+                    android:textAllCaps="false"
+                    android:background="@drawable/chip_unselected_bg"
+                    android:textColor="#666666"
+                    android:layout_margin="4dp"
+                    android:padding="8dp"
+                    android:lineSpacingExtra="2dp"/>
+
+                <Button
+                    android:id="@+id/btnBudgetHigh"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="Parents\nPaying\n₹15K+"
+                    android:textSize="11sp"
+                    android:textAllCaps="false"
+                    android:background="@drawable/chip_unselected_bg"
+                    android:textColor="#666666"
+                    android:layout_margin="4dp"
+                    android:padding="8dp"
+                    android:lineSpacingExtra="2dp"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!-- Trip Type Card -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/card_rounded_bg"
+            android:padding="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginTop="12dp"
+            android:elevation="2dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="🎪 Trip Type"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:textColor="#1A1A2E"/>
+
+            <GridLayout
+                android:id="@+id/tripTypeGrid"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:columnCount="3"
+                android:rowCount="2"
+                android:layout_marginTop="10dp">
+
+                <Button
+                    android:id="@+id/btnAdventure"
+                    android:layout_width="0dp"
+                    android:layout_columnWeight="1"
+                    android:layout_height="52dp"
+                    android:text="🏔️ Adventure"
+                    android:textSize="11sp"
+                    android:textAllCaps="false"
+                    android:background="@drawable/chip_unselected_bg"
+                    android:textColor="#666666"
+                    android:layout_margin="4dp"/>
+
+                <Button
+                    android:id="@+id/btnRelaxation"
+                    android:layout_width="0dp"
+                    android:layout_columnWeight="1"
+                    android:layout_height="52dp"
+                    android:text="🧘 Relaxation"
+                    android:textSize="11sp"
+                    android:textAllCaps="false"
+                    android:background="@drawable/chip_unselected_bg"
+                    android:textColor="#666666"
+                    android:layout_margin="4dp"/>
+
+                <Button
+                    android:id="@+id/btnSightseeing"
+                    android:layout_width="0dp"
+                    android:layout_columnWeight="1"
+                    android:layout_height="52dp"
+                    android:text="🏛️ Sightseeing"
+                    android:textSize="11sp"
+                    android:textAllCaps="false"
+                    android:background="@drawable/chip_unselected_bg"
+                    android:textColor="#666666"
+                    android:layout_margin="4dp"/>
+
+                <Button
+                    android:id="@+id/btnRoadTrip"
+                    android:layout_width="0dp"
+                    android:layout_columnWeight="1"
+                    android:layout_height="52dp"
+                    android:text="🚗 Road Trip"
+                    android:textSize="11sp"
+                    android:textAllCaps="false"
+                    android:background="@drawable/chip_unselected_bg"
+                    android:textColor="#666666"
+                    android:layout_margin="4dp"/>
+
+                <Button
+                    android:id="@+id/btnWeekend"
+                    android:layout_width="0dp"
+                    android:layout_columnWeight="1"
+                    android:layout_height="52dp"
+                    android:text="🌅 Weekend"
+                    android:textSize="11sp"
+                    android:textAllCaps="false"
+                    android:background="@drawable/chip_unselected_bg"
+                    android:textColor="#666666"
+                    android:layout_margin="4dp"/>
+
+                <Button
+                    android:id="@+id/btnBeach"
+                    android:layout_width="0dp"
+                    android:layout_columnWeight="1"
+                    android:layout_height="52dp"
+                    android:text="🏖️ Beach"
+                    android:textSize="11sp"
+                    android:textAllCaps="false"
+                    android:background="@drawable/chip_unselected_bg"
+                    android:textColor="#666666"
+                    android:layout_margin="4dp"/>
+
+            </GridLayout>
+
+        </LinearLayout>
+
+        <!-- Surprise Me Button -->
+        <Button
+            android:id="@+id/btnSurpriseMe"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:text="🎲 Surprise Me!"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textAllCaps="false"
+            android:background="@drawable/btn_surprise_bg"
+            android:textColor="#FFFFFF"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginTop="20dp"/>
+
+        <!-- Generate Trip Button -->
+        <Button
+            android:id="@+id/btnGenerateTrip"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:text="✨ Generate My Trip"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            android:textAllCaps="false"
+            android:background="@drawable/btn_generate_bg"
+            android:textColor="#FFFFFF"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginTop="12dp"/>
+
+    </LinearLayout>
+
+</ScrollView>

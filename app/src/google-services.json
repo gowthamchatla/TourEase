@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1054493504656",
+    "project_id": "tourease-40611",
+    "storage_bucket": "tourease-40611.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1054493504656:android:5cb91fb51f6ddefd9e1415",
+        "android_client_info": {
+          "package_name": "com.tourease.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBZaHpIVmP6acI3XzoDfia495tfHS5UBnc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

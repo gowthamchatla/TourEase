@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#0F0F1A">
+
+    <!-- TOP BAR -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:paddingTop="48dp"
+        android:paddingBottom="16dp"
+        android:background="#1A1A2E"
+        android:gravity="center_vertical"
+        android:elevation="8dp">
+
+        <ImageView
+            android:id="@+id/ivBack"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:padding="8dp"
+            android:src="@android:drawable/ic_menu_revert"
+            android:background="@drawable/bg_circle_translucent"
+            app:tint="#FFFFFF" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginStart="16dp">
+
+            <TextView
+                android:id="@+id/tvTrainName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Rajdhani Express"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:maxLines="1"
+                android:ellipsize="end" />
+
+            <TextView
+                android:id="@+id/tvTrainInfo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="#12952 • Seat Availability"
+                android:textSize="13sp"
+                android:textColor="#7C7C99"
+                android:layout_marginTop="2dp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <!-- CLASS SELECTOR -->
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
+        android:paddingTop="16dp"
+        android:paddingBottom="8dp">
+
+        <LinearLayout
+            android:id="@+id/llClassButtons"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btnClassSL"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:text="SL"
+                android:textSize="13sp"
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:backgroundTint="#6C63FF"
+                android:minWidth="64dp"
+                android:layout_marginEnd="8dp"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                app:cornerRadius="20dp" />
+
+            <Button
+                android:id="@+id/btnClass3A"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:text="3AC"
+                android:textSize="13sp"
+                android:textStyle="bold"
+                android:textColor="#9999AA"
+                android:backgroundTint="#2A2A40"
+                android:minWidth="64dp"
+                android:layout_marginEnd="8dp"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                app:cornerRadius="20dp" />
+
+            <Button
+                android:id="@+id/btnClass2A"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:text="2AC"
+                android:textSize="13sp"
+                android:textStyle="bold"
+                android:textColor="#9999AA"
+                android:backgroundTint="#2A2A40"
+                android:minWidth="64dp"
+                android:layout_marginEnd="8dp"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                app:cornerRadius="20dp" />
+
+            <Button
+                android:id="@+id/btnClass1A"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:text="1AC"
+                android:textSize="13sp"
+                android:textStyle="bold"
+                android:textColor="#9999AA"
+                android:backgroundTint="#2A2A40"
+                android:minWidth="64dp"
+                android:layout_marginEnd="8dp"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                app:cornerRadius="20dp" />
+
+            <Button
+                android:id="@+id/btnClass2S"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:text="2S"
+                android:textSize="13sp"
+                android:textStyle="bold"
+                android:textColor="#9999AA"
+                android:backgroundTint="#2A2A40"
+                android:minWidth="64dp"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                app:cornerRadius="20dp" />
+
+        </LinearLayout>
+
+    </HorizontalScrollView>
+
+    <!-- AVAILABILITY LIST -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvAvailability"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="12dp"
+        android:clipToPadding="false" />
+
+</LinearLayout>

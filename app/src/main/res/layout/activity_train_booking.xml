@@ -1,0 +1,516 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:background="#0F0F1A">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="24dp">
+
+        <!-- GRADIENT HEADER BACKGROUND -->
+        <View
+            android:id="@+id/headerBg"
+            android:layout_width="match_parent"
+            android:layout_height="280dp"
+            android:background="@drawable/bg_train_header"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!-- BACK BUTTON -->
+        <ImageView
+            android:id="@+id/ivBack"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="48dp"
+            android:padding="10dp"
+            android:src="@android:drawable/ic_menu_revert"
+            android:background="@drawable/bg_circle_translucent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="#FFFFFF" />
+
+        <!-- TITLE -->
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="48dp"
+            android:text="Train Tickets"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!-- SUBTITLE -->
+        <TextView
+            android:id="@+id/tvSubtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="Find the best trains across India ✨"
+            android:textSize="13sp"
+            android:textColor="#B3FFFFFF"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvTitle" />
+
+        <!-- MAIN BOOKING CARD -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/bookingCard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginTop="120dp"
+            app:cardCornerRadius="24dp"
+            app:cardElevation="12dp"
+            app:cardBackgroundColor="#1A1A2E"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="24dp">
+
+                <!-- FROM FIELD -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="FROM"
+                    android:textSize="11sp"
+                    android:textColor="#7C7C99"
+                    android:letterSpacing="0.15"
+                    android:textStyle="bold" />
+
+                <AutoCompleteTextView
+                    android:id="@+id/etFromLocation"
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+                    android:layout_marginTop="8dp"
+                    android:hint="Departure station"
+                    android:textColor="#FFFFFF"
+                    android:textColorHint="#4A4A6A"
+                    android:textSize="16sp"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp"
+                    android:background="@drawable/bg_input_dark"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:completionThreshold="1"
+                    android:popupBackground="#1A1A2E"
+                    android:dropDownVerticalOffset="4dp" />
+
+                <!-- SWAP BUTTON -->
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="-8dp"
+                    android:layout_marginBottom="-8dp">
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_gravity="center"
+                        android:background="#2A2A40" />
+
+                    <TextView
+                        android:id="@+id/ivSwapLocations"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:text="⇅"
+                        android:textSize="20sp"
+                        android:textColor="#FFFFFF"
+                        android:background="@drawable/bg_swap_button" />
+                </FrameLayout>
+
+                <!-- TO FIELD -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="TO"
+                    android:textSize="11sp"
+                    android:textColor="#7C7C99"
+                    android:letterSpacing="0.15"
+                    android:textStyle="bold" />
+
+                <AutoCompleteTextView
+                    android:id="@+id/etToLocation"
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+                    android:layout_marginTop="8dp"
+                    android:hint="Destination station"
+                    android:textColor="#FFFFFF"
+                    android:textColorHint="#4A4A6A"
+                    android:textSize="16sp"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp"
+                    android:background="@drawable/bg_input_dark"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:completionThreshold="1"
+                    android:popupBackground="#1A1A2E"
+                    android:dropDownVerticalOffset="4dp" />
+
+                <!-- DATE FIELD -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="JOURNEY DATE"
+                    android:textSize="11sp"
+                    android:textColor="#7C7C99"
+                    android:letterSpacing="0.15"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/etJourneyDate"
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+                    android:layout_marginTop="8dp"
+                    android:hint="Select date"
+                    android:textColor="#FFFFFF"
+                    android:textColorHint="#4A4A6A"
+                    android:textSize="16sp"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp"
+                    android:background="@drawable/bg_input_dark"
+                    android:focusable="false"
+                    android:clickable="true" />
+
+                <!-- CLASS SELECTION -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="TRAVEL CLASS"
+                    android:textSize="11sp"
+                    android:textColor="#7C7C99"
+                    android:letterSpacing="0.15"
+                    android:textStyle="bold" />
+
+                <HorizontalScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:scrollbars="none">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <Button
+                            android:id="@+id/btnSleeper"
+                            android:layout_width="wrap_content"
+                            android:layout_height="40dp"
+                            android:minWidth="70dp"
+                            android:text="SL"
+                            android:textSize="13sp"
+                            android:textColor="#FFFFFF"
+                            android:backgroundTint="#6C63FF"
+                            android:layout_marginEnd="8dp"
+                            android:insetTop="0dp"
+                            android:insetBottom="0dp"
+                            app:cornerRadius="20dp" />
+
+                        <Button
+                            android:id="@+id/btn3AC"
+                            android:layout_width="wrap_content"
+                            android:layout_height="40dp"
+                            android:minWidth="70dp"
+                            android:text="3AC"
+                            android:textSize="13sp"
+                            android:textColor="#9999AA"
+                            android:backgroundTint="#2A2A40"
+                            android:layout_marginEnd="8dp"
+                            android:insetTop="0dp"
+                            android:insetBottom="0dp"
+                            app:cornerRadius="20dp" />
+
+                        <Button
+                            android:id="@+id/btn2AC"
+                            android:layout_width="wrap_content"
+                            android:layout_height="40dp"
+                            android:minWidth="70dp"
+                            android:text="2AC"
+                            android:textSize="13sp"
+                            android:textColor="#9999AA"
+                            android:backgroundTint="#2A2A40"
+                            android:layout_marginEnd="8dp"
+                            android:insetTop="0dp"
+                            android:insetBottom="0dp"
+                            app:cornerRadius="20dp" />
+
+                        <Button
+                            android:id="@+id/btn1AC"
+                            android:layout_width="wrap_content"
+                            android:layout_height="40dp"
+                            android:minWidth="70dp"
+                            android:text="1AC"
+                            android:textSize="13sp"
+                            android:textColor="#9999AA"
+                            android:backgroundTint="#2A2A40"
+                            android:layout_marginEnd="8dp"
+                            android:insetTop="0dp"
+                            android:insetBottom="0dp"
+                            app:cornerRadius="20dp" />
+
+                        <Button
+                            android:id="@+id/btnCC"
+                            android:layout_width="wrap_content"
+                            android:layout_height="40dp"
+                            android:minWidth="70dp"
+                            android:text="CC"
+                            android:textSize="13sp"
+                            android:textColor="#9999AA"
+                            android:backgroundTint="#2A2A40"
+                            android:insetTop="0dp"
+                            android:insetBottom="0dp"
+                            app:cornerRadius="20dp" />
+
+                    </LinearLayout>
+
+                </HorizontalScrollView>
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <!-- LOADING INDICATOR -->
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:indeterminateTint="#6C63FF"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/bookingCard"
+            app:layout_constraintBottom_toTopOf="@id/btnSearchTrains"
+            android:layout_marginTop="16dp" />
+
+        <!-- SEARCH BUTTON -->
+        <Button
+            android:id="@+id/btnSearchTrains"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginTop="20dp"
+            android:text="Search Trains"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="#6C63FF"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            app:cornerRadius="16dp"
+            app:layout_constraintTop_toBottomOf="@id/bookingCard" />
+
+        <!-- POPULAR ROUTES SECTION -->
+        <TextView
+            android:id="@+id/tvPopularLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="28dp"
+            android:text="Popular Routes 🔥"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btnSearchTrains" />
+
+        <HorizontalScrollView
+            android:id="@+id/popularRoutesScroll"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:scrollbars="none"
+            android:paddingStart="16dp"
+            android:clipToPadding="false"
+            app:layout_constraintTop_toBottomOf="@id/tvPopularLabel">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/chipRoute1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:gravity="center"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp"
+                    android:layout_marginEnd="10dp"
+                    android:text="Delhi → Mumbai"
+                    android:textSize="13sp"
+                    android:textColor="#CCCCDD"
+                    android:background="@drawable/bg_route_chip" />
+
+                <TextView
+                    android:id="@+id/chipRoute2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:gravity="center"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp"
+                    android:layout_marginEnd="10dp"
+                    android:text="Chennai → Bangalore"
+                    android:textSize="13sp"
+                    android:textColor="#CCCCDD"
+                    android:background="@drawable/bg_route_chip" />
+
+                <TextView
+                    android:id="@+id/chipRoute3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:gravity="center"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp"
+                    android:layout_marginEnd="10dp"
+                    android:text="Mumbai → Goa"
+                    android:textSize="13sp"
+                    android:textColor="#CCCCDD"
+                    android:background="@drawable/bg_route_chip" />
+
+                <TextView
+                    android:id="@+id/chipRoute4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:gravity="center"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp"
+                    android:layout_marginEnd="10dp"
+                    android:text="Delhi → Jaipur"
+                    android:textSize="13sp"
+                    android:textColor="#CCCCDD"
+                    android:background="@drawable/bg_route_chip" />
+
+            </LinearLayout>
+
+        </HorizontalScrollView>
+
+        <!-- QUICK ACTIONS SECTION -->
+        <TextView
+            android:id="@+id/tvQuickLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="28dp"
+            android:text="Quick Actions"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/popularRoutesScroll" />
+
+        <!-- PNR Status Card -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardPnrStatus"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginTop="12dp"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="4dp"
+            app:cardBackgroundColor="#1A1A2E"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/cardLiveTrack"
+            app:layout_constraintTop_toBottomOf="@id/tvQuickLabel">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="18dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="🔍"
+                    android:textSize="24sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="PNR Status"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:textColor="#FFFFFF"
+                    android:layout_marginTop="8dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Check booking status"
+                    android:textSize="11sp"
+                    android:textColor="#7C7C99"
+                    android:layout_marginTop="4dp" />
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <!-- Live Track Card -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardLiveTrack"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginTop="12dp"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="4dp"
+            app:cardBackgroundColor="#1A1A2E"
+            app:layout_constraintStart_toEndOf="@id/cardPnrStatus"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvQuickLabel">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="18dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="📍"
+                    android:textSize="24sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Live Track"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:textColor="#FFFFFF"
+                    android:layout_marginTop="8dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Track train location"
+                    android:textSize="11sp"
+                    android:textColor="#7C7C99"
+                    android:layout_marginTop="4dp" />
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">TE</string>
+    <string name="google_web_client_id" translatable="false">YOUR_WEB_CLIENT_ID_FROM_FIREBASE</string>
+</resources>
