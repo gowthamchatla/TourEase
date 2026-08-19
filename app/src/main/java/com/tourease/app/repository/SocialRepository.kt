@@ -19,8 +19,6 @@ class SocialRepository {
 
     val currentUserId: String get() = auth.currentUser?.uid ?: ""
 
-    // ==================== POSTS ====================
-
     fun createPost(
         text: String,
         imageUri: Uri?,
@@ -36,14 +34,12 @@ class SocialRepository {
             return
         }
 
-        // First get user info
         db.collection("users").document(userId).get()
             .addOnSuccessListener { userDoc ->
                 val userName = userDoc.getString("username") ?: "User"
                 val userPhoto = userDoc.getString("photoBase64") ?: ""
 
                 if (imageUri != null) {
-                    // Upload image first
                     val imageRef = storage.reference.child("posts/${UUID.randomUUID()}.jpg")
                     imageRef.putFile(imageUri)
                         .addOnSuccessListener {
@@ -94,7 +90,6 @@ class SocialRepository {
             .addOnFailureListener { onFailure(it) }
     }
 
-    // Discover feed — all posts
     fun getDiscoverFeed(onResult: (List<Post>) -> Unit) {
         db.collection("posts")
             .orderBy("timestamp", Query.Direction.DESCENDING)
@@ -109,7 +104,6 @@ class SocialRepository {
             }
     }
 
-    // Following feed — posts from followed users
     fun getFollowingFeed(onResult: (List<Post>) -> Unit) {
         val userId = currentUserId
         if (userId.isEmpty()) {
@@ -127,7 +121,6 @@ class SocialRepository {
                     return@addOnSuccessListener
                 }
 
-                // Firestore whereIn supports max 10 items
                 val chunks = following.chunked(10)
                 val allPosts = mutableListOf<Post>()
                 var completedChunks = 0
@@ -155,8 +148,6 @@ class SocialRepository {
             }
     }
 
-    // ==================== FIRE (LIKE) ====================
-
     fun toggleFire(postId: String, onResult: (Boolean, Int) -> Unit) {
         val userId = currentUserId
         val postRef = db.collection("posts").document(postId)
@@ -181,8 +172,6 @@ class SocialRepository {
         }
     }
 
-    // ==================== BOOKMARK ====================
-
     fun toggleBookmark(postId: String, onResult: (Boolean) -> Unit) {
         val userId = currentUserId
         val postRef = db.collection("posts").document(postId)
@@ -206,8 +195,6 @@ class SocialRepository {
         }
     }
 
-    // ==================== COMMENTS ====================
-
     fun addComment(postId: String, text: String, onSuccess: () -> Unit) {
         val userId = currentUserId
 
@@ -228,7 +215,6 @@ class SocialRepository {
                 )
 
                 commentRef.set(comment).addOnSuccessListener {
-                    // Increment comment count
                     db.collection("posts").document(postId)
                         .update("commentCount", FieldValue.increment(1))
                     onSuccess()
@@ -246,7 +232,32 @@ class SocialRepository {
             }
     }
 
-    // ==================== FOLLOW ====================
+    fun deleteComment(postId: String, commentId: String, onSuccess: () -> Unit) {
+        db.collection("posts").document(postId)
+            .collection("comments").document(commentId)
+            .delete()
+            .addOnSuccessListener {
+                db.collection("posts").document(postId)
+                    .update("commentCount", FieldValue.increment(-1))
+                onSuccess()
+            }
+    }
+
+    fun deletePost(postId: String, onSuccess: () -> Unit, onFailure: (Exception) -> Unit) {
+        db.collection("posts").document(postId)
+            .delete()
+            .addOnSuccessListener {
+                db.collection("posts").document(postId)
+                    .collection("comments").get()
+                    .addOnSuccessListener { snapshot ->
+                        val batch = db.batch()
+                        snapshot.documents.forEach { batch.delete(it.reference) }
+                        batch.commit()
+                    }
+                onSuccess()
+            }
+            .addOnFailureListener { onFailure(it) }
+    }
 
     fun toggleFollow(targetUserId: String, onResult: (Boolean) -> Unit) {
         val userId = currentUserId

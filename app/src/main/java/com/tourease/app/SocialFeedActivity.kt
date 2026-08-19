@@ -1,5 +1,6 @@
 package com.tourease.app
 
+import android.app.AlertDialog
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
@@ -10,8 +11,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.LinearLayout
+import android.widget.PopupMenu
 import android.widget.ProgressBar
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -145,6 +148,7 @@ class SocialFeedActivity : AppCompatActivity() {
             val tvCommentCount: TextView = view.findViewById(R.id.tvCommentCount)
             val llBookmark: LinearLayout = view.findViewById(R.id.llBookmark)
             val tvBookmarkIcon: TextView = view.findViewById(R.id.tvBookmarkIcon)
+            val ivPostMenu: ImageView = view.findViewById(R.id.ivPostMenu)
         }
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PostViewHolder {
@@ -309,6 +313,50 @@ class SocialFeedActivity : AppCompatActivity() {
                     intent.putExtra("USER_ID", post.userId)
                     startActivity(intent)
                 }
+            }
+
+            // 3-dot menu — only for post owner
+            if (post.userId == currentUserId) {
+                holder.ivPostMenu.visibility = View.VISIBLE
+                holder.ivPostMenu.setOnClickListener { view ->
+                    val popup = PopupMenu(view.context, view)
+                    popup.menu.add(0, 0, 0, "Delete Post")
+                    popup.setOnMenuItemClickListener { item ->
+                        if (item.itemId == 0) {
+                            AlertDialog.Builder(view.context)
+                                .setTitle("Delete Post")
+                                .setMessage("Are you sure you want to delete this post?")
+                                .setPositiveButton("Delete") { _, _ ->
+                                    repository.deletePost(post.id,
+                                        onSuccess = {
+                                            runOnUiThread {
+                                                Toast.makeText(
+                                                    this@SocialFeedActivity,
+                                                    "Post deleted",
+                                                    Toast.LENGTH_SHORT
+                                                ).show()
+                                            }
+                                        },
+                                        onFailure = {
+                                            runOnUiThread {
+                                                Toast.makeText(
+                                                    this@SocialFeedActivity,
+                                                    "Failed to delete",
+                                                    Toast.LENGTH_SHORT
+                                                ).show()
+                                            }
+                                        }
+                                    )
+                                }
+                                .setNegativeButton("Cancel", null)
+                                .show()
+                        }
+                        true
+                    }
+                    popup.show()
+                }
+            } else {
+                holder.ivPostMenu.visibility = View.GONE
             }
         }
 

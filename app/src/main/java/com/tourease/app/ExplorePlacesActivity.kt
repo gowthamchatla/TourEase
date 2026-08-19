@@ -7,8 +7,6 @@ import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 
 class ExplorePlacesActivity : AppCompatActivity() {
 
@@ -22,14 +20,19 @@ class ExplorePlacesActivity : AppCompatActivity() {
         val ivBack: ImageView = findViewById(R.id.ivBack)
         ivBack.setOnClickListener { finish() }
 
-        val btnMountains: LinearLayout = findViewById(R.id.btnMountains)
-        val btnBeaches: LinearLayout = findViewById(R.id.btnBeaches)
-        val btnHeritage: LinearLayout = findViewById(R.id.btnHeritage)
-        val btnNature: LinearLayout = findViewById(R.id.btnNature)
-        val btnSpiritual: LinearLayout = findViewById(R.id.btnSpiritual)
-        val btnAdventure: LinearLayout = findViewById(R.id.btnAdventure)
-        val btnFood: LinearLayout = findViewById(R.id.btnFood)
-        val btnShopping: LinearLayout = findViewById(R.id.btnShopping)
+        val cardNearbyPlaces: androidx.cardview.widget.CardView = findViewById(R.id.cardNearbyPlaces)
+        cardNearbyPlaces.setOnClickListener {
+            startActivity(Intent(this, NearbyPlacesActivity::class.java))
+        }
+
+        val btnMountains: LinearLayout = findViewById(R.id.catMountains)
+        val btnBeaches: LinearLayout = findViewById(R.id.catBeaches)
+        val btnHeritage: LinearLayout = findViewById(R.id.catHeritage)
+        val btnNature: LinearLayout = findViewById(R.id.catNature)
+        val btnSpiritual: LinearLayout = findViewById(R.id.catSpiritual)
+        val btnAdventure: LinearLayout = findViewById(R.id.catAdventure)
+        val btnFood: LinearLayout = findViewById(R.id.catFood)
+        val btnShopping: LinearLayout = findViewById(R.id.catShopping)
 
         btnMountains.setOnClickListener { filterByCategory("Mountains") }
         btnBeaches.setOnClickListener { filterByCategory("Beaches") }
@@ -40,9 +43,10 @@ class ExplorePlacesActivity : AppCompatActivity() {
         btnFood.setOnClickListener { filterByCategory("Food") }
         btnShopping.setOnClickListener { filterByCategory("Shopping") }
 
+        destinationsContainer = findViewById(R.id.destinationsContainer)
+
         showAllDestinations()
 
-        // Enhanced Search with Wikipedia fallback
         val etSearch: android.widget.EditText = findViewById(R.id.etSearch)
         etSearch.addTextChangedListener(object : android.text.TextWatcher {
             override fun afterTextChanged(s: android.text.Editable?) {
@@ -50,13 +54,10 @@ class ExplorePlacesActivity : AppCompatActivity() {
                 if (query.isEmpty()) {
                     showAllDestinations()
                 } else {
-                    // First check our 30 destinations
                     val localResults = DestinationsData.searchDestinations(query)
                     if (localResults.isNotEmpty()) {
                         updateDestinationCards(localResults)
-
                     } else {
-                        // Not in our database - search Wikipedia
                         searchWikipedia(query)
                     }
                 }
@@ -68,8 +69,6 @@ class ExplorePlacesActivity : AppCompatActivity() {
 
     private fun filterByCategory(category: String) {
         currentCategory = category
-
-
         val destinations = DestinationsData.getByCategory(category)
         updateDestinationCards(destinations)
     }
@@ -80,15 +79,12 @@ class ExplorePlacesActivity : AppCompatActivity() {
     }
 
     private fun updateDestinationCards(destinations: List<Destination>) {
-        val container = findViewById<LinearLayout>(R.id.tripsContainer)
-        container.removeAllViews()
-
+        destinationsContainer.removeAllViews()
         destinations.forEach { destination ->
             val card = createDestinationCard(destination)
-            container.addView(card)
+            destinationsContainer.addView(card)
         }
-
-        container.visibility = android.view.View.VISIBLE
+        destinationsContainer.visibility = android.view.View.VISIBLE
     }
 
     private fun createDestinationCard(destination: Destination): CardView {
@@ -106,24 +102,38 @@ class ExplorePlacesActivity : AppCompatActivity() {
         layout.orientation = LinearLayout.VERTICAL
         layout.setPadding(40, 40, 40, 40)
 
-        val emoji = android.widget.TextView(this)
-        emoji.text = destination.emoji
-        emoji.textSize = 64f
-        emoji.gravity = android.view.Gravity.CENTER
+        // ✅ Real photo ImageView instead of emoji TextView
+        val imageView = ImageView(this)
+        val imageParams = LinearLayout.LayoutParams(
+            LinearLayout.LayoutParams.MATCH_PARENT, 500
+        )
+        imageParams.setMargins(0, 0, 0, 24)
+        imageView.layoutParams = imageParams
+        imageView.scaleType = ImageView.ScaleType.CENTER_CROP
+        imageView.clipToOutline = true
+        val shape = android.graphics.drawable.GradientDrawable()
+        shape.cornerRadius = 24f
+        imageView.background = shape
+
+        com.bumptech.glide.Glide.with(this)
+            .load(destination.imageUrl)
+            .placeholder(R.drawable.profile_cover_default_bg)
+            .centerCrop()
+            .into(imageView)
 
         val name = android.widget.TextView(this)
         name.text = destination.name
         name.textSize = 22f
         name.setTypeface(null, android.graphics.Typeface.BOLD)
         name.setTextColor(android.graphics.Color.parseColor("#333333"))
-        name.setPadding(0, 24, 0, 12)
+        name.setPadding(0, 0, 0, 12)
 
         val info = android.widget.TextView(this)
         info.text = "⭐ ${destination.rating} · ${destination.emoji} ${destination.category} · 💰 ${destination.priceRange}"
         info.textSize = 14f
         info.setTextColor(android.graphics.Color.parseColor("#666666"))
 
-        layout.addView(emoji)
+        layout.addView(imageView)
         layout.addView(name)
         layout.addView(info)
         card.addView(layout)
@@ -136,20 +146,16 @@ class ExplorePlacesActivity : AppCompatActivity() {
 
         return card
     }
+
     private fun searchWikipedia(query: String) {
-
-        // For now, show a placeholder
-        val container = findViewById<LinearLayout>(R.id.tripsContainer)
-        container.removeAllViews()
-
+        destinationsContainer.removeAllViews()
         val card = createExternalSearchCard(query)
-        container.addView(card)
-
-        container.visibility = android.view.View.VISIBLE
+        destinationsContainer.addView(card)
+        destinationsContainer.visibility = android.view.View.VISIBLE
     }
 
-    private fun createExternalSearchCard(placeName: String): androidx.cardview.widget.CardView {
-        val card = androidx.cardview.widget.CardView(this)
+    private fun createExternalSearchCard(placeName: String): CardView {
+        val card = CardView(this)
         val params = LinearLayout.LayoutParams(
             LinearLayout.LayoutParams.MATCH_PARENT,
             LinearLayout.LayoutParams.WRAP_CONTENT

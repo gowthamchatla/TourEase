@@ -9,18 +9,24 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fillViewport="true">
+        android:fillViewport="true"
+        android:clipChildren="false"
+        android:clipToPadding="false">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:paddingBottom="32dp">
+            android:paddingBottom="32dp"
+            android:clipChildren="false"
+            android:clipToPadding="false">
 
             <!-- COVER + PROFILE PIC SECTION -->
             <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:clipChildren="false"
+                android:clipToPadding="false">
 
                 <!-- Cover Photo -->
                 <ImageView
@@ -28,13 +34,13 @@
                     android:layout_width="match_parent"
                     android:layout_height="200dp"
                     android:scaleType="centerCrop"
-                    android:background="@drawable/profile_cover_default_bg"/>
+                    android:background="@drawable/profile_cover_default_bg" />
 
                 <!-- Dark overlay on cover -->
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="200dp"
-                    android:background="#33000000"/>
+                    android:background="#22000000" />
 
                 <!-- Top bar icons over cover -->
                 <RelativeLayout
@@ -52,7 +58,7 @@
                         android:padding="6dp"
                         android:src="@android:drawable/ic_menu_revert"
                         android:background="@drawable/icon_circle_dark_bg"
-                        app:tint="#FFFFFF"/>
+                        app:tint="#FFFFFF" />
 
                     <ImageView
                         android:id="@+id/ivSettings"
@@ -62,7 +68,7 @@
                         android:padding="6dp"
                         android:src="@android:drawable/ic_menu_manage"
                         android:background="@drawable/icon_circle_dark_bg"
-                        app:tint="#FFFFFF"/>
+                        app:tint="#FFFFFF" />
 
                 </RelativeLayout>
 
@@ -71,23 +77,22 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal|bottom"
-                    android:layout_marginBottom="-50dp"
-                    android:translationY="50dp">
+                    android:translationY="55dp">
 
                     <!-- Orange ring -->
                     <androidx.cardview.widget.CardView
-                        android:layout_width="110dp"
-                        android:layout_height="110dp"
+                        android:layout_width="114dp"
+                        android:layout_height="114dp"
                         android:layout_gravity="center"
-                        app:cardCornerRadius="55dp"
+                        app:cardCornerRadius="57dp"
                         app:cardElevation="8dp"
                         app:cardBackgroundColor="#FF6B35">
 
                         <androidx.cardview.widget.CardView
-                            android:layout_width="102dp"
-                            android:layout_height="102dp"
+                            android:layout_width="104dp"
+                            android:layout_height="104dp"
                             android:layout_gravity="center"
-                            app:cardCornerRadius="51dp"
+                            app:cardCornerRadius="52dp"
                             app:cardElevation="0dp"
                             app:cardBackgroundColor="#0A0A14">
 
@@ -96,7 +101,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:scaleType="centerCrop"
-                                android:src="@android:drawable/sym_def_app_icon"/>
+                                android:src="@android:drawable/sym_def_app_icon" />
 
                         </androidx.cardview.widget.CardView>
 
@@ -105,16 +110,16 @@
                     <!-- Camera badge -->
                     <TextView
                         android:id="@+id/tvCameraBadge"
-                        android:layout_width="28dp"
-                        android:layout_height="28dp"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
                         android:layout_gravity="bottom|end"
-                        android:layout_marginEnd="4dp"
-                        android:layout_marginBottom="4dp"
+                        android:layout_marginEnd="2dp"
+                        android:layout_marginBottom="2dp"
                         android:background="@drawable/icon_circle_orange_bg"
                         android:text="📷"
-                        android:textSize="12sp"
+                        android:textSize="13sp"
                         android:gravity="center"
-                        android:visibility="gone"/>
+                        android:visibility="gone" />
 
                 </FrameLayout>
 
@@ -123,7 +128,7 @@
             <!-- Spacer for overlapping profile pic -->
             <View
                 android:layout_width="match_parent"
-                android:layout_height="56dp"/>
+                android:layout_height="60dp" />
 
             <!-- USERNAME + BIO -->
             <LinearLayout
@@ -140,7 +145,7 @@
                     android:text="Username"
                     android:textSize="24sp"
                     android:textStyle="bold"
-                    android:textColor="#FFFFFF"/>
+                    android:textColor="#FFFFFF" />
 
                 <TextView
                     android:id="@+id/tvBio"
@@ -152,7 +157,7 @@
                     android:layout_marginTop="4dp"
                     android:gravity="center"
                     android:paddingStart="40dp"
-                    android:paddingEnd="40dp"/>
+                    android:paddingEnd="40dp" />
 
             </LinearLayout>
 
@@ -182,7 +187,7 @@
                         android:text="0"
                         android:textSize="22sp"
                         android:textStyle="bold"
-                        android:textColor="#FFFFFF"/>
+                        android:textColor="#FFFFFF" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -190,14 +195,14 @@
                         android:text="Posts"
                         android:textSize="12sp"
                         android:textColor="#666688"
-                        android:layout_marginTop="2dp"/>
+                        android:layout_marginTop="2dp" />
 
                 </LinearLayout>
 
                 <View
                     android:layout_width="1dp"
                     android:layout_height="40dp"
-                    android:background="#222240"/>
+                    android:background="#222240" />
 
                 <!-- Followers -->
                 <LinearLayout
@@ -214,7 +219,7 @@
                         android:text="0"
                         android:textSize="22sp"
                         android:textStyle="bold"
-                        android:textColor="#FFFFFF"/>
+                        android:textColor="#FFFFFF" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -222,14 +227,14 @@
                         android:text="Followers"
                         android:textSize="12sp"
                         android:textColor="#666688"
-                        android:layout_marginTop="2dp"/>
+                        android:layout_marginTop="2dp" />
 
                 </LinearLayout>
 
                 <View
                     android:layout_width="1dp"
                     android:layout_height="40dp"
-                    android:background="#222240"/>
+                    android:background="#222240" />
 
                 <!-- Following -->
                 <LinearLayout
@@ -246,7 +251,7 @@
                         android:text="0"
                         android:textSize="22sp"
                         android:textStyle="bold"
-                        android:textColor="#FFFFFF"/>
+                        android:textColor="#FFFFFF" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -254,7 +259,7 @@
                         android:text="Following"
                         android:textSize="12sp"
                         android:textColor="#666688"
-                        android:layout_marginTop="2dp"/>
+                        android:layout_marginTop="2dp" />
 
                 </LinearLayout>
 
@@ -277,12 +282,12 @@
                     android:textSize="14sp"
                     android:textStyle="bold"
                     android:textAllCaps="false"
-                    android:textColor="#0A0A14"
+                    android:textColor="#FFFFFF"
                     android:backgroundTint="#FF6B35"
                     android:layout_marginEnd="6dp"
                     android:insetTop="0dp"
                     android:insetBottom="0dp"
-                    app:cornerRadius="25dp"/>
+                    app:cornerRadius="25dp" />
 
                 <Button
                     android:id="@+id/btnSearchUsers"
@@ -298,7 +303,7 @@
                     android:layout_marginStart="6dp"
                     android:insetTop="0dp"
                     android:insetBottom="0dp"
-                    app:cornerRadius="25dp"/>
+                    app:cornerRadius="25dp" />
 
             </LinearLayout>
 
@@ -332,7 +337,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="🔥"
-                            android:textSize="20sp"/>
+                            android:textSize="20sp" />
 
                         <TextView
                             android:id="@+id/tvFireTotal"
@@ -342,7 +347,7 @@
                             android:textSize="14sp"
                             android:textStyle="bold"
                             android:textColor="#FF6B35"
-                            android:layout_marginStart="8dp"/>
+                            android:layout_marginStart="8dp" />
 
                     </LinearLayout>
 
@@ -371,14 +376,14 @@
                             android:layout_weight="1"
                             android:layout_height="wrap_content"
                             android:text="🌙"
-                            android:textSize="20sp"/>
+                            android:textSize="20sp" />
 
                         <androidx.appcompat.widget.SwitchCompat
                             android:id="@+id/switchDarkMode"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             app:thumbTint="#FF6B35"
-                            app:trackTint="#2A2A40"/>
+                            app:trackTint="#2A2A40" />
 
                     </LinearLayout>
 
@@ -393,7 +398,7 @@
                 android:background="#1A1A2E"
                 android:layout_marginTop="24dp"
                 android:layout_marginStart="20dp"
-                android:layout_marginEnd="20dp"/>
+                android:layout_marginEnd="20dp" />
 
             <!-- MY POSTS SECTION -->
             <TextView
@@ -404,7 +409,7 @@
                 android:textStyle="bold"
                 android:textColor="#FFFFFF"
                 android:layout_marginStart="20dp"
-                android:layout_marginTop="16dp"/>
+                android:layout_marginTop="16dp" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvUserPosts"
@@ -414,7 +419,7 @@
                 android:paddingStart="16dp"
                 android:paddingEnd="16dp"
                 android:clipToPadding="false"
-                android:nestedScrollingEnabled="false"/>
+                android:nestedScrollingEnabled="false" />
 
             <!-- Empty state -->
             <LinearLayout
@@ -430,7 +435,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="✈️"
-                    android:textSize="48sp"/>
+                    android:textSize="48sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -439,7 +444,7 @@
                     android:textSize="17sp"
                     android:textStyle="bold"
                     android:textColor="#7C7C99"
-                    android:layout_marginTop="12dp"/>
+                    android:layout_marginTop="12dp" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -447,7 +452,7 @@
                     android:text="Share your travel stories on TourTalk!"
                     android:textSize="13sp"
                     android:textColor="#55556B"
-                    android:layout_marginTop="4dp"/>
+                    android:layout_marginTop="4dp" />
 
             </LinearLayout>
 

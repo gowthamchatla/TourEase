@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#F5F5F5">
+    android:background="#0A0A14">
 
     <!-- TOP BAR -->
     <LinearLayout
@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:padding="16dp"
-        android:background="#FF6B35"
+        android:background="#0F0F1A"
         android:gravity="center_vertical"
         android:elevation="4dp">
 
@@ -44,7 +44,7 @@
                 android:layout_height="wrap_content"
                 android:text="Your Travel Assistant 🤖"
                 android:textSize="12sp"
-                android:textColor="#FFFFFF"/>
+                android:textColor="#6C63FF"/>
 
         </LinearLayout>
 
@@ -53,6 +53,67 @@
             android:layout_height="wrap_content"
             android:text="🤖"
             android:textSize="32sp"/>
+
+    </LinearLayout>
+
+    <!-- QUICK ACTION BUTTONS — outside ScrollView so they're always clickable -->
+    <LinearLayout
+        android:id="@+id/quickActionsLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="12dp"
+        android:background="#0F0F1A">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Try asking:"
+            android:textSize="12sp"
+            android:textColor="#666680"
+            android:layout_marginBottom="8dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btnBestPlaces"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="🏖️ Beaches"
+                android:padding="8dp"
+                android:layout_marginEnd="4dp"
+                android:backgroundTint="#1E1E2E"
+                android:textColor="#E0E0E0"
+                android:textSize="11sp"/>
+
+            <Button
+                android:id="@+id/btnBudget"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="💰 Budget"
+                android:padding="8dp"
+                android:layout_marginEnd="4dp"
+                android:backgroundTint="#1E1E2E"
+                android:textColor="#E0E0E0"
+                android:textSize="11sp"/>
+
+            <Button
+                android:id="@+id/btnWeather"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="☀️ Manali"
+                android:padding="8dp"
+                android:backgroundTint="#1E1E2E"
+                android:textColor="#E0E0E0"
+                android:textSize="11sp"/>
+
+        </LinearLayout>
 
     </LinearLayout>
 
@@ -76,9 +137,10 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="start"
                 android:layout_marginBottom="16dp"
+                android:layout_marginEnd="80dp"
                 app:cardCornerRadius="16dp"
                 app:cardElevation="2dp"
-                app:cardBackgroundColor="#FFFFFF">
+                app:cardBackgroundColor="#1E1E2E">
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -92,66 +154,33 @@
                         android:text="Hey! I'm AI OG 🤖"
                         android:textSize="16sp"
                         android:textStyle="bold"
-                        android:textColor="#333333"/>
+                        android:textColor="#FFFFFF"/>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Your personal travel assistant!\nAsk me anything about your trip!"
                         android:textSize="14sp"
-                        android:textColor="#666666"
+                        android:textColor="#B0B0C0"
                         android:layout_marginTop="8dp"/>
 
                 </LinearLayout>
 
             </androidx.cardview.widget.CardView>
 
-            <!-- Quick Actions -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Try asking:"
-                android:textSize="12sp"
-                android:textColor="#999999"
-                android:layout_marginBottom="8dp"/>
-
-            <!-- Quick Action Buttons -->
-            <Button
-                android:id="@+id/btnBestPlaces"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="🏖️ Best beaches in India"
-                android:textAlignment="textStart"
-                android:padding="12dp"
-                android:layout_marginBottom="8dp"
-                android:backgroundTint="#E3F2FD"
-                android:textColor="#333333"/>
-
-            <Button
-                android:id="@+id/btnBudget"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="💰 Budget travel tips"
-                android:textAlignment="textStart"
-                android:padding="12dp"
-                android:layout_marginBottom="8dp"
-                android:backgroundTint="#FFF3E0"
-                android:textColor="#333333"/>
-
-            <Button
-                android:id="@+id/btnWeather"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="☀️ Best time to visit Manali"
-                android:textAlignment="textStart"
-                android:padding="12dp"
-                android:layout_marginBottom="8dp"
-                android:backgroundTint="#E8F5E9"
-                android:textColor="#333333"/>
-
         </LinearLayout>
 
     </ScrollView>
+
+    <!-- LOADING INDICATOR -->
+    <ProgressBar
+        android:id="@+id/loadingIndicator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:indeterminateTint="#6C63FF"
+        android:visibility="gone"
+        android:layout_marginBottom="4dp"/>
 
     <!-- INPUT AREA -->
     <LinearLayout
@@ -159,8 +188,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:padding="16dp"
-        android:background="#FFFFFF"
+        android:padding="12dp"
+        android:background="#0F0F1A"
+        android:gravity="center_vertical"
         android:elevation="8dp">
 
         <EditText
@@ -169,8 +199,9 @@
             android:layout_weight="1"
             android:layout_height="wrap_content"
             android:hint="Ask AI OG anything..."
+            android:textColor="#FFFFFF"
             android:padding="12dp"
-            android:background="@android:drawable/edit_text"
+            android:background="@drawable/bg_input_dark"
             android:maxLines="3"/>
 
         <ImageView

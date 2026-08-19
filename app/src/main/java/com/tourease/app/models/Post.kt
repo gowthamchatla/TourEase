@@ -18,7 +18,6 @@ data class Post(
     var bookmarkedBy: List<String> = emptyList(),
     var timestamp: Timestamp = Timestamp.now()
 ) {
-    // No-arg constructor for Firestore
     constructor() : this("", "", "", "", "", "", "", emptyList(), false, 0, emptyList(), 0, emptyList(), Timestamp.now())
 }
 

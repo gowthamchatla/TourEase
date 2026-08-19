@@ -1,321 +1,336 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fillViewport="true"
-    android:background="#F5F5F5">
+    android:orientation="vertical"
+    android:background="#0A0A14">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <!-- Status bar spacer -->
+    <View
+        android:id="@+id/statusBarSpacer"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="0dp" />
 
-        <!-- TOP BAR -->
+    <!-- Top Bar -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="20dp"
+        android:paddingTop="12dp"
+        android:paddingBottom="12dp">
+
+        <ImageView
+            android:id="@+id/ivBack"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_centerVertical="true"
+            android:src="@android:drawable/ic_menu_revert"
+            android:padding="8dp"
+            android:background="#1E1E38"
+            android:tint="#FFFFFF" />
+
         <LinearLayout
-            android:id="@+id/topBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Explore Places"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:textColor="#FFFFFF" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="find your next obsession 🔥"
+                android:textSize="11sp"
+                android:textColor="#6C63FF" />
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <!-- Search Bar -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#1E1E38"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginBottom="16dp"
+        android:paddingHorizontal="14dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="🔍"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/etSearch"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@null"
+            android:hint="Search destinations..."
+            android:textColor="#FFFFFF"
+            android:textColorHint="#3D3D5C"
+            android:textSize="14sp"
+            android:paddingStart="10dp"
+            android:inputType="text"
+            android:maxLines="1" />
+    </LinearLayout>
+
+    <!-- Nearby Places Banner -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardNearbyPlaces"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginBottom="16dp"
+        app:cardBackgroundColor="#1A1A2E"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="8dp">
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:padding="16dp"
-            android:background="#FFFFFF"
-            android:gravity="center_vertical"
-            android:elevation="4dp"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <ImageView
-                android:id="@+id/ivBack"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:src="@android:drawable/ic_menu_revert"/>
+            android:gravity="center_vertical">
 
             <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="📍"
+                android:textSize="32sp" />
+
+            <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Explore Places"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                android:textColor="#333333"
-                android:gravity="center"/>
+                android:orientation="vertical"
+                android:layout_marginStart="12dp">
 
-            <View
-                android:layout_width="40dp"
-                android:layout_height="40dp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Nearby Tourist Places"
+                    android:textColor="#FFFFFF"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Real spots via Google Places API"
+                    android:textColor="#9B9BB4"
+                    android:textSize="12sp" />
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Explore →"
+                android:textColor="#FF6B35"
+                android:textSize="13sp"
+                android:textStyle="bold" />
 
         </LinearLayout>
 
-        <!-- SEARCH BAR -->
-        <androidx.cardview.widget.CardView
-            android:id="@+id/searchCard"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            app:cardCornerRadius="12dp"
-            app:cardElevation="4dp"
-            app:layout_constraintTop_toBottomOf="@id/topBar">
+    </androidx.cardview.widget.CardView>
 
-            <EditText
-                android:id="@+id/etSearch"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Search destinations..."
-                android:padding="16dp"
-                android:drawableStart="@android:drawable/ic_menu_search"
-                android:drawablePadding="12dp"
-                android:background="@android:color/transparent"/>
-
-        </androidx.cardview.widget.CardView>
-
-        <!-- CATEGORIES TITLE -->
-        <TextView
-            android:id="@+id/tvCategoriesTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Categories"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:textColor="#333333"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            app:layout_constraintTop_toBottomOf="@id/searchCard"
-            app:layout_constraintStart_toStartOf="parent"/>
-
-        <!-- CATEGORIES GRID -->
-        <GridLayout
-            android:id="@+id/categoriesGrid"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:columnCount="4"
-            android:rowCount="2"
-            android:padding="16dp"
-            app:layout_constraintTop_toBottomOf="@id/tvCategoriesTitle">
-
-            <!-- Mountains -->
-            <LinearLayout
-                android:id="@+id/btnMountains"
-                android:layout_width="0dp"
-                android:layout_columnWeight="1"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:gravity="center"
-                android:padding="8dp">
-                <TextView
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
-                    android:text="⛰️"
-                    android:textSize="32sp"
-                    android:gravity="center"
-                    android:background="#E3F2FD"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Mountains"
-                    android:textSize="12sp"
-                    android:textColor="#333333"
-                    android:layout_marginTop="4dp"/>
-            </LinearLayout>
-
-            <!-- Beaches -->
-            <LinearLayout
-                android:id="@+id/btnBeaches"
-                android:layout_width="0dp"
-                android:layout_columnWeight="1"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:gravity="center"
-                android:padding="8dp">
-                <TextView
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
-                    android:text="🏖️"
-                    android:textSize="32sp"
-                    android:gravity="center"
-                    android:background="#FFF3E0"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Beaches"
-                    android:textSize="12sp"
-                    android:textColor="#333333"
-                    android:layout_marginTop="4dp"/>
-            </LinearLayout>
-
-            <!-- Heritage -->
-            <LinearLayout
-                android:id="@+id/btnHeritage"
-                android:layout_width="0dp"
-                android:layout_columnWeight="1"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:gravity="center"
-                android:padding="8dp">
-                <TextView
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
-                    android:text="🏛️"
-                    android:textSize="32sp"
-                    android:gravity="center"
-                    android:background="#F3E5F5"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Heritage"
-                    android:textSize="12sp"
-                    android:textColor="#333333"
-                    android:layout_marginTop="4dp"/>
-            </LinearLayout>
-
-            <!-- Nature -->
-            <LinearLayout
-                android:id="@+id/btnNature"
-                android:layout_width="0dp"
-                android:layout_columnWeight="1"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:gravity="center"
-                android:padding="8dp">
-                <TextView
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
-                    android:text="🌳"
-                    android:textSize="32sp"
-                    android:gravity="center"
-                    android:background="#E8F5E9"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Nature"
-                    android:textSize="12sp"
-                    android:textColor="#333333"
-                    android:layout_marginTop="4dp"/>
-            </LinearLayout>
-
-            <!-- Spiritual -->
-            <LinearLayout
-                android:id="@+id/btnSpiritual"
-                android:layout_width="0dp"
-                android:layout_columnWeight="1"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:gravity="center"
-                android:padding="8dp">
-                <TextView
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
-                    android:text="🕉️"
-                    android:textSize="32sp"
-                    android:gravity="center"
-                    android:background="#FFF9C4"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Spiritual"
-                    android:textSize="12sp"
-                    android:textColor="#333333"
-                    android:layout_marginTop="4dp"/>
-            </LinearLayout>
-
-            <!-- Adventure -->
-            <LinearLayout
-                android:id="@+id/btnAdventure"
-                android:layout_width="0dp"
-                android:layout_columnWeight="1"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:gravity="center"
-                android:padding="8dp">
-                <TextView
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
-                    android:text="🎿"
-                    android:textSize="32sp"
-                    android:gravity="center"
-                    android:background="#FFEBEE"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Adventure"
-                    android:textSize="12sp"
-                    android:textColor="#333333"
-                    android:layout_marginTop="4dp"/>
-            </LinearLayout>
-
-            <!-- Food -->
-            <LinearLayout
-                android:id="@+id/btnFood"
-                android:layout_width="0dp"
-                android:layout_columnWeight="1"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:gravity="center"
-                android:padding="8dp">
-                <TextView
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
-                    android:text="🍛"
-                    android:textSize="32sp"
-                    android:gravity="center"
-                    android:background="#FCE4EC"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Food"
-                    android:textSize="12sp"
-                    android:textColor="#333333"
-                    android:layout_marginTop="4dp"/>
-            </LinearLayout>
-
-            <!-- Shopping -->
-            <LinearLayout
-                android:id="@+id/btnShopping"
-                android:layout_width="0dp"
-                android:layout_columnWeight="1"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:gravity="center"
-                android:padding="8dp">
-                <TextView
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
-                    android:text="🛍️"
-                    android:textSize="32sp"
-                    android:gravity="center"
-                    android:background="#E1F5FE"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Shopping"
-                    android:textSize="12sp"
-                    android:textColor="#333333"
-                    android:layout_marginTop="4dp"/>
-            </LinearLayout>
-
-        </GridLayout>
-
-        <!-- TRENDING PLACES TITLE -->
-        <TextView
-            android:id="@+id/tvTrendingTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Trending Destinations"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:textColor="#333333"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            app:layout_constraintTop_toBottomOf="@id/categoriesGrid"
-            app:layout_constraintStart_toStartOf="parent"/>
+    <!-- Scrollable content -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:scrollbars="none">
 
         <LinearLayout
-            android:id="@+id/tripsContainer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="16dp"
-            app:layout_constraintTop_toBottomOf="@id/tvTrendingTitle"/>
+            android:paddingBottom="32dp">
 
+            <!-- Categories Label -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Categories"
+                android:textSize="17sp"
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:layout_marginStart="16dp"
+                android:layout_marginBottom="12dp" />
 
+            <!-- Category Grid -->
+            <GridLayout
+                android:id="@+id/categoryGrid"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:columnCount="4"
+                android:rowCount="2"
+                android:layout_marginHorizontal="12dp"
+                android:layout_marginBottom="24dp">
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+                <!-- Mountains -->
+                <LinearLayout
+                    android:id="@+id/catMountains"
+                    android:layout_width="0dp"
+                    android:layout_columnWeight="1"
+                    android:layout_height="80dp"
+                    android:background="#12122A"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:layout_margin="4dp">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="🏔️" android:textSize="24sp" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Mountains" android:textColor="#9B9BB4" android:textSize="10sp" android:layout_marginTop="4dp" />
+                </LinearLayout>
 
-</ScrollView>
+                <!-- Beaches -->
+                <LinearLayout
+                    android:id="@+id/catBeaches"
+                    android:layout_width="0dp"
+                    android:layout_columnWeight="1"
+                    android:layout_height="80dp"
+                    android:background="#12122A"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:layout_margin="4dp">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="🏖️" android:textSize="24sp" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Beaches" android:textColor="#9B9BB4" android:textSize="10sp" android:layout_marginTop="4dp" />
+                </LinearLayout>
+
+                <!-- Heritage -->
+                <LinearLayout
+                    android:id="@+id/catHeritage"
+                    android:layout_width="0dp"
+                    android:layout_columnWeight="1"
+                    android:layout_height="80dp"
+                    android:background="#12122A"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:layout_margin="4dp">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="🏛️" android:textSize="24sp" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Heritage" android:textColor="#9B9BB4" android:textSize="10sp" android:layout_marginTop="4dp" />
+                </LinearLayout>
+
+                <!-- Nature -->
+                <LinearLayout
+                    android:id="@+id/catNature"
+                    android:layout_width="0dp"
+                    android:layout_columnWeight="1"
+                    android:layout_height="80dp"
+                    android:background="#12122A"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:layout_margin="4dp">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="🌿" android:textSize="24sp" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Nature" android:textColor="#9B9BB4" android:textSize="10sp" android:layout_marginTop="4dp" />
+                </LinearLayout>
+
+                <!-- Spiritual -->
+                <LinearLayout
+                    android:id="@+id/catSpiritual"
+                    android:layout_width="0dp"
+                    android:layout_columnWeight="1"
+                    android:layout_height="80dp"
+                    android:background="#12122A"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:layout_margin="4dp">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="🕉️" android:textSize="24sp" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Spiritual" android:textColor="#9B9BB4" android:textSize="10sp" android:layout_marginTop="4dp" />
+                </LinearLayout>
+
+                <!-- Adventure -->
+                <LinearLayout
+                    android:id="@+id/catAdventure"
+                    android:layout_width="0dp"
+                    android:layout_columnWeight="1"
+                    android:layout_height="80dp"
+                    android:background="#12122A"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:layout_margin="4dp">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="🧗" android:textSize="24sp" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Adventure" android:textColor="#9B9BB4" android:textSize="10sp" android:layout_marginTop="4dp" />
+                </LinearLayout>
+
+                <!-- Food -->
+                <LinearLayout
+                    android:id="@+id/catFood"
+                    android:layout_width="0dp"
+                    android:layout_columnWeight="1"
+                    android:layout_height="80dp"
+                    android:background="#12122A"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:layout_margin="4dp">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="🍜" android:textSize="24sp" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Food" android:textColor="#9B9BB4" android:textSize="10sp" android:layout_marginTop="4dp" />
+                </LinearLayout>
+
+                <!-- Shopping -->
+                <LinearLayout
+                    android:id="@+id/catShopping"
+                    android:layout_width="0dp"
+                    android:layout_columnWeight="1"
+                    android:layout_height="80dp"
+                    android:background="#12122A"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:layout_margin="4dp">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="🛍️" android:textSize="24sp" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Shopping" android:textColor="#9B9BB4" android:textSize="10sp" android:layout_marginTop="4dp" />
+                </LinearLayout>
+
+            </GridLayout>
+
+            <!-- Trending Destinations Label -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:paddingHorizontal="16dp"
+                android:layout_marginBottom="12dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Trending Destinations"
+                    android:textSize="17sp"
+                    android:textStyle="bold"
+                    android:textColor="#FFFFFF" />
+
+                <TextView
+                    android:id="@+id/tvSeeAll"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="See all →"
+                    android:textColor="#6C63FF"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+            <!-- Destination cards list -->
+            <LinearLayout
+                android:id="@+id/destinationsContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingHorizontal="16dp" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

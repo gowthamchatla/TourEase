@@ -1,0 +1,512 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#0A0A14">
+
+    <!-- Top Bar -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="20dp"
+        android:paddingTop="16dp"
+        android:paddingBottom="16dp">
+
+        <ImageView
+            android:id="@+id/ivBack"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_centerVertical="true"
+            android:src="@android:drawable/ic_menu_revert"
+            android:padding="8dp"
+            android:background="#1E1E38"
+            android:tint="#FFFFFF" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="🏨 Stays"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:textColor="#FFFFFF" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="find your vibe, book your stay ✨"
+                android:textSize="11sp"
+                android:textColor="#A78BFA" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/ivWishlist"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:src="@android:drawable/btn_star_big_off"
+            android:padding="8dp"
+            android:background="#1E1E38"
+            android:tint="#FF6B9D" />
+    </RelativeLayout>
+
+    <!-- Scrollable Content -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="32dp">
+
+            <!-- Stay Type Toggle -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="54dp"
+                android:background="#12122A"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginBottom="20dp"
+                android:orientation="horizontal"
+                android:padding="4dp">
+
+                <TextView
+                    android:id="@+id/tabLongStay"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="🌙 Long Stay"
+                    android:gravity="center"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:textColor="#FFFFFF"
+                    android:background="#6C63FF" />
+
+                <TextView
+                    android:id="@+id/tabHourlyStay"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="⚡ Hourly Stay"
+                    android:gravity="center"
+                    android:textSize="14sp"
+                    android:textColor="#9B9BB4"
+                    android:background="@null" />
+            </LinearLayout>
+
+            <!-- Search Card -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#12122A"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginBottom="16dp"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <!-- City Input - NO autocomplete -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="54dp"
+                    android:background="#1E1E38"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:paddingHorizontal="14dp"
+                    android:layout_marginBottom="10dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="📍"
+                        android:textSize="18sp" />
+
+                    <EditText
+                        android:id="@+id/etCity"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@null"
+                        android:hint="Enter city, area or property..."
+                        android:textColor="#FFFFFF"
+                        android:textColorHint="#3D3D5C"
+                        android:textSize="14sp"
+                        android:paddingStart="10dp"
+                        android:inputType="textFilter|textNoSuggestions"
+                        android:imeOptions="actionSearch"
+                        android:privateImeOptions="nm"
+                        android:maxLines="1" />
+
+                    <TextView
+                        android:id="@+id/btnNearMe"
+                        android:layout_width="wrap_content"
+                        android:layout_height="34dp"
+                        android:text="📡 Near Me"
+                        android:gravity="center"
+                        android:paddingHorizontal="12dp"
+                        android:textSize="12sp"
+                        android:textColor="#A78BFA"
+                        android:background="#1A1A3A" />
+                </LinearLayout>
+
+                <!-- Date Row -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="54dp"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="10dp">
+
+                    <LinearLayout
+                        android:id="@+id/layoutCheckIn"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="#1E1E38"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:layout_marginEnd="5dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="CHECK-IN"
+                            android:textSize="9sp"
+                            android:textColor="#6C63FF"
+                            android:textStyle="bold"
+                            android:letterSpacing="0.1" />
+
+                        <TextView
+                            android:id="@+id/tvCheckIn"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="📅 Select Date"
+                            android:textSize="13sp"
+                            android:textColor="#FFFFFF"
+                            android:layout_marginTop="2dp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/layoutCheckOut"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="#1E1E38"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:layout_marginStart="5dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="CHECK-OUT"
+                            android:textSize="9sp"
+                            android:textColor="#FF6B9D"
+                            android:textStyle="bold"
+                            android:letterSpacing="0.1" />
+
+                        <TextView
+                            android:id="@+id/tvCheckOut"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="📅 Select Date"
+                            android:textSize="13sp"
+                            android:textColor="#FFFFFF"
+                            android:layout_marginTop="2dp" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!-- Guests Row -->
+                <LinearLayout
+                    android:id="@+id/layoutGuests"
+                    android:layout_width="match_parent"
+                    android:layout_height="54dp"
+                    android:background="#1E1E38"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:paddingHorizontal="14dp"
+                    android:layout_marginBottom="16dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="👥"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/tvGuests"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="1 Room • 2 Adults"
+                        android:textColor="#FFFFFF"
+                        android:textSize="14sp"
+                        android:paddingStart="10dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="›"
+                        android:textSize="22sp"
+                        android:textColor="#6C63FF" />
+                </LinearLayout>
+
+                <!-- Price Filter Label -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="💸 Price Filter"
+                    android:textColor="#9B9BB4"
+                    android:textSize="13sp"
+                    android:layout_marginBottom="10dp" />
+
+                <!-- Price Chips -->
+                <HorizontalScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:scrollbars="none"
+                    android:layout_marginBottom="16dp">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/chip1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="36dp"
+                            android:text="₹100 - 1000"
+                            android:gravity="center"
+                            android:paddingHorizontal="16dp"
+                            android:textSize="13sp"
+                            android:textColor="#6C63FF"
+                            android:background="#1A1A3A"
+                            android:layout_marginEnd="8dp" />
+
+                        <TextView
+                            android:id="@+id/chip2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="36dp"
+                            android:text="₹1001 - 2000"
+                            android:gravity="center"
+                            android:paddingHorizontal="16dp"
+                            android:textSize="13sp"
+                            android:textColor="#9B9BB4"
+                            android:background="#12122A"
+                            android:layout_marginEnd="8dp" />
+
+                        <TextView
+                            android:id="@+id/chip3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="36dp"
+                            android:text="₹2001 - 3000"
+                            android:gravity="center"
+                            android:paddingHorizontal="16dp"
+                            android:textSize="13sp"
+                            android:textColor="#9B9BB4"
+                            android:background="#12122A"
+                            android:layout_marginEnd="8dp" />
+
+                        <TextView
+                            android:id="@+id/chip4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="36dp"
+                            android:text="₹3001+"
+                            android:gravity="center"
+                            android:paddingHorizontal="16dp"
+                            android:textSize="13sp"
+                            android:textColor="#9B9BB4"
+                            android:background="#12122A" />
+                    </LinearLayout>
+                </HorizontalScrollView>
+
+                <!-- Search Button -->
+                <TextView
+                    android:id="@+id/btnSearchHotels"
+                    android:layout_width="match_parent"
+                    android:layout_height="54dp"
+                    android:text="🔍  Search Hotels"
+                    android:gravity="center"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="#FFFFFF"
+                    android:background="#6C63FF" />
+
+            </LinearLayout>
+
+            <!-- Offers Section -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:paddingHorizontal="16dp"
+                android:layout_marginBottom="12dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="🔥 Hot Offers"
+                    android:textSize="17sp"
+                    android:textStyle="bold"
+                    android:textColor="#FFFFFF" />
+
+                <TextView
+                    android:id="@+id/tvViewAll"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="View all →"
+                    android:textColor="#A78BFA"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+            <!-- Offer Filter Chips -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginStart="16dp"
+                android:layout_marginBottom="14dp">
+
+                <TextView
+                    android:id="@+id/filterHotels"
+                    android:layout_width="wrap_content"
+                    android:layout_height="36dp"
+                    android:text="Hotels"
+                    android:gravity="center"
+                    android:paddingHorizontal="20dp"
+                    android:textSize="13sp"
+                    android:textStyle="bold"
+                    android:textColor="#FFFFFF"
+                    android:background="#6C63FF"
+                    android:layout_marginEnd="8dp" />
+
+                <TextView
+                    android:id="@+id/filterBankOffers"
+                    android:layout_width="wrap_content"
+                    android:layout_height="36dp"
+                    android:text="Bank Offers"
+                    android:gravity="center"
+                    android:paddingHorizontal="20dp"
+                    android:textSize="13sp"
+                    android:textColor="#9B9BB4"
+                    android:background="#12122A" />
+            </LinearLayout>
+
+            <!-- Offer Cards horizontal scroll -->
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scrollbars="none"
+                android:paddingStart="16dp"
+                android:layout_marginBottom="24dp"
+                android:clipToPadding="false">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="260dp"
+                        android:layout_height="140dp"
+                        android:background="#1A0A2E"
+                        android:orientation="vertical"
+                        android:padding="16dp"
+                        android:layout_marginEnd="12dp">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="🏷️ WEEKEND DEAL" android:textSize="10sp" android:textColor="#A78BFA" android:textStyle="bold" android:letterSpacing="0.1" />
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Up to 50% Off&#10;on Hotels 🎉" android:textSize="18sp" android:textStyle="bold" android:textColor="#FFFFFF" android:layout_marginTop="6dp" />
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Code: WEEKEND" android:textSize="11sp" android:textColor="#0A0A14" android:background="#A78BFA" android:paddingHorizontal="10dp" android:paddingVertical="3dp" android:layout_marginTop="8dp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="260dp"
+                        android:layout_height="140dp"
+                        android:background="#0D1A1A"
+                        android:orientation="vertical"
+                        android:padding="16dp"
+                        android:layout_marginEnd="12dp">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="💳 BANK OFFER" android:textSize="10sp" android:textColor="#34D399" android:textStyle="bold" android:letterSpacing="0.1" />
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Flat ₹666 Off&#10;with HDFC Card 💸" android:textSize="18sp" android:textStyle="bold" android:textColor="#FFFFFF" android:layout_marginTop="6dp" />
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Code: HDFC666" android:textSize="11sp" android:textColor="#0A0A14" android:background="#34D399" android:paddingHorizontal="10dp" android:paddingVertical="3dp" android:layout_marginTop="8dp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="260dp"
+                        android:layout_height="140dp"
+                        android:background="#1A0D0D"
+                        android:orientation="vertical"
+                        android:padding="16dp"
+                        android:layout_marginEnd="12dp">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="⚡ FLASH SALE" android:textSize="10sp" android:textColor="#FF6B9D" android:textStyle="bold" android:letterSpacing="0.1" />
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="First Booking&#10;₹200 Cashback 🤑" android:textSize="18sp" android:textStyle="bold" android:textColor="#FFFFFF" android:layout_marginTop="6dp" />
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Code: FIRST200" android:textSize="11sp" android:textColor="#0A0A14" android:background="#FF6B9D" android:paddingHorizontal="10dp" android:paddingVertical="3dp" android:layout_marginTop="8dp" />
+                    </LinearLayout>
+
+                </LinearLayout>
+            </HorizontalScrollView>
+
+            <!-- Popular Cities -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="🌆 Popular Cities"
+                android:textSize="17sp"
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:layout_marginStart="16dp"
+                android:layout_marginBottom="12dp" />
+
+            <GridLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:columnCount="3"
+                android:layout_marginHorizontal="12dp">
+
+                <LinearLayout android:id="@+id/cityMumbai" android:layout_width="0dp" android:layout_columnWeight="1" android:layout_height="70dp" android:background="#12122A" android:orientation="vertical" android:gravity="center" android:layout_margin="4dp">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="🌊" android:textSize="22sp" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Mumbai" android:textColor="#9B9BB4" android:textSize="11sp" android:layout_marginTop="4dp" />
+                </LinearLayout>
+
+                <LinearLayout android:id="@+id/cityDelhi" android:layout_width="0dp" android:layout_columnWeight="1" android:layout_height="70dp" android:background="#12122A" android:orientation="vertical" android:gravity="center" android:layout_margin="4dp">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="🏛️" android:textSize="22sp" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Delhi" android:textColor="#9B9BB4" android:textSize="11sp" android:layout_marginTop="4dp" />
+                </LinearLayout>
+
+                <LinearLayout android:id="@+id/cityGoa" android:layout_width="0dp" android:layout_columnWeight="1" android:layout_height="70dp" android:background="#12122A" android:orientation="vertical" android:gravity="center" android:layout_margin="4dp">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="🏖️" android:textSize="22sp" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Goa" android:textColor="#9B9BB4" android:textSize="11sp" android:layout_marginTop="4dp" />
+                </LinearLayout>
+
+                <LinearLayout android:id="@+id/cityBangalore" android:layout_width="0dp" android:layout_columnWeight="1" android:layout_height="70dp" android:background="#12122A" android:orientation="vertical" android:gravity="center" android:layout_margin="4dp">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="🌿" android:textSize="22sp" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Bangalore" android:textColor="#9B9BB4" android:textSize="11sp" android:layout_marginTop="4dp" />
+                </LinearLayout>
+
+                <LinearLayout android:id="@+id/cityJaipur" android:layout_width="0dp" android:layout_columnWeight="1" android:layout_height="70dp" android:background="#12122A" android:orientation="vertical" android:gravity="center" android:layout_margin="4dp">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="🏰" android:textSize="22sp" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Jaipur" android:textColor="#9B9BB4" android:textSize="11sp" android:layout_marginTop="4dp" />
+                </LinearLayout>
+
+                <LinearLayout android:id="@+id/cityManali" android:layout_width="0dp" android:layout_columnWeight="1" android:layout_height="70dp" android:background="#12122A" android:orientation="vertical" android:gravity="center" android:layout_margin="4dp">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="🏔️" android:textSize="22sp" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Manali" android:textColor="#9B9BB4" android:textSize="11sp" android:layout_marginTop="4dp" />
+                </LinearLayout>
+
+            </GridLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

@@ -10,5 +10,11 @@ data class Destination(
     val description: String,
     val bestTime: String,
     val daysNeeded: String,
-    val highlights: List<String>
+    val highlights: List<String>,
+    val imageUrl: String,
+    val drawableRes: Int = 0,
+    val entryFee: String,
+    val howToReach: List<String>,
+    val trendingSpots: List<TrendingSpot>,
+    val tips: List<String>
 )

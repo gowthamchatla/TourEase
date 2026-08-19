@@ -1,6 +1,7 @@
 package com.tourease.app
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -37,11 +38,9 @@ class CommentsActivity : AppCompatActivity() {
 
         rvComments.layoutManager = LinearLayoutManager(this)
 
-        // Load comments in real-time
         repository.getComments(postId) { comments ->
             runOnUiThread {
                 rvComments.adapter = CommentAdapter(comments)
-                // Scroll to bottom
                 if (comments.isNotEmpty()) {
                     rvComments.scrollToPosition(comments.size - 1)
                 }
@@ -69,6 +68,7 @@ class CommentsActivity : AppCompatActivity() {
             val tvUser: TextView = view.findViewById(R.id.tvCommentUser)
             val tvTime: TextView = view.findViewById(R.id.tvCommentTime)
             val tvText: TextView = view.findViewById(R.id.tvCommentText)
+            val ivDelete: ImageView = view.findViewById(R.id.ivDeleteComment)
         }
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -91,6 +91,24 @@ class CommentsActivity : AppCompatActivity() {
                 minutes < 60 -> "${minutes}m"
                 hours < 24 -> "${hours}h"
                 else -> "${days}d"
+            }
+
+            if (comment.userId == repository.currentUserId) {
+                holder.ivDelete.visibility = View.VISIBLE
+                holder.ivDelete.setOnClickListener {
+                    Log.d("DELETE", "postId: $postId, commentId: ${comment.id}")
+                    repository.deleteComment(postId, comment.id) {
+                        runOnUiThread {
+                            Toast.makeText(
+                                this@CommentsActivity,
+                                "Comment deleted",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
+                    }
+                }
+            } else {
+                holder.ivDelete.visibility = View.GONE
             }
         }
 

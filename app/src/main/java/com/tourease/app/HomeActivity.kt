@@ -78,7 +78,7 @@ class HomeActivity : AppCompatActivity() {
             startActivity(Intent(this, BusBookingActivity::class.java))
         }
         findViewById<LinearLayout>(R.id.btnStays).setOnClickListener {
-            Toast.makeText(this, "Stays booking coming soon!", Toast.LENGTH_SHORT).show()
+            startActivity(Intent(this, StaysActivity::class.java))
         }
 
         // Feature Cards
